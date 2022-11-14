@@ -53,6 +53,7 @@ label start:
     b "Once you add a story, pictures, and music, you can release it to the world!"
 
     a "I accept!"
+    a "Hello world."
 
 # The following is some code I stole from my other renpy game, use this basis to make the minigames
     n "."
