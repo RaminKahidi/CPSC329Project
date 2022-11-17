@@ -76,20 +76,64 @@ label start:
         $ player_password = renpy.input("Enter your new password here:")
         $ player_password = player_password.strip()
 
-        $ strong_password = False
-
-        #Add password strength code here
-        if len(player_password) > 11:
-            $ strong_password = True
-
-        b "Okay Agent [player_name], let's see how strong your password is..."
-
-        if strong_password == False:
-            b "Oh no! The malicious attackers were able to guess your password and steal our classified information. Please retry the mission."
+        if player_password == "":
             call password from _call_password
+
         else:
-            b "You did it! I knew our best agent would come up with a secure password! However, this is just the start of your mission if you're determined to keep our classified
-            information secure. "
+            $ password_strength_meter = 0
+            $ password_long_enough = False
+            $ password_contains_digits = False
+            $ password_contains_lowercase = False
+            $ password_contains_uppercase = False
+            $ password_contains_special = False
+
+            if len(player_password) > 11:
+                $ password_long_enough = True
+                $ password_strength_meter += 1
+            
+            $ character = 0
+            while character < len(player_password):
+                if player_password[character].isdigit():
+                    $ password_contains_digits = True
+                if player_password[character].islower():
+                    $ password_contains_lowercase = True
+                if player_password[character].isupper():
+                    $ password_contains_uppercase = True
+                if player_password[character].isdigit() == False and player_password[character].isalpha() == False:
+                    $ password_contains_special = True
+                $ character += 1
+
+            if password_contains_digits:
+                $ password_strength_meter += 1
+            if password_contains_lowercase:
+                $ password_strength_meter += 1
+            if password_contains_uppercase:
+                $ password_strength_meter += 1
+            if password_contains_special:
+                $ password_strength_meter += 1
+
+            b "Okay Agent [player_name], let's see how strong your password is..."
+
+            if password_strength_meter == 5:
+                b "Congratulations, your password was 100\% secure! I knew our best agent would come up with a secure password! However, this is just the start of your mission if you're determined to keep our classified
+                information secure. "
+
+            else:
+                b "Oh no! The malicious attackers were able to guess your password and steal our classified information."
+                if password_long_enough == False:
+                    b "Your password was less than 12 characters long."
+                if password_contains_lowercase == False:
+                    b "Your password did not contain any lowercase characters."
+                if password_contains_uppercase == False:
+                    b "Your password did not contain any uppercase characters."
+                if password_contains_digits == False:
+                    b "Your password did not contain any digits."
+                if password_contains_special == False:
+                    b "Your password did not contain any special characters."
+                $ password_strength_meter_percent = int(password_strength_meter) * 100 / 5 + renpy.random.randint(0,10)
+                b "Your password was only [password_strength_meter_percent]\% secure. Please retry the mission."
+                call password from _call_password_1
+                
 
 
 # The following is some code I stole from my other renpy game, use this basis to make the minigames

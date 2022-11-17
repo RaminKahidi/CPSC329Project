@@ -2,17 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 82: reached end of line when expecting ':'.
-    if len(player_password) > 11
-                                ^
+The label _call_password is defined twice, at File "game/script.rpy", line 80:
+            call password from _call_password
+and File "game/script.rpy", line 131:
+                call password from _call_password
 
-File "game/script.rpy", line 87: reached end of line when expecting ':'.
-    if player_password_strength == 0
-                                    ^
-
-File "game/script.rpy", line 90: expected statement.
-    else 
-         ^
 
 Ren'Py Version: Ren'Py 7.5.3.22090809
-Thu Nov 17 15:14:25 2022
+Thu Nov 17 16:35:35 2022
