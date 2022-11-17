@@ -7,9 +7,9 @@
 # Color is a optional parameter, dw about adding it.
 
 # define e = Character("Eileen")
-define a = Character('[player_name]', color="#F7D762")
-define b = Character('Boss', color="#1EC8F1")
-define n = Character('Narrator', color="#1EC8F1")
+define a = Character('[player_name]', color="#ff0000")
+define b = Character('Boss', color="#2f00ff")
+define n = Character('Narrator', color="#9900ff")
 
 
 # The game starts here.
@@ -34,10 +34,10 @@ label start:
     scene bg room
 
     # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
+    # replace it by adding a file named "boss happy.png" to the images
     # directory.
 
-    show eileen happy
+    show boss happy
 
     # These display lines of dialogue.
 
@@ -48,12 +48,13 @@ label start:
         $ player_name= "X"
 
 
-    b "Hello Agent [player_name]. As our top agent, you’ve been entrusted with a high priority mission. Should you choose to accept, your mission is to protect top-secret classified information from a terrorist group of malicious attackers. The fate of the entire world rests in your hands…"
-
-    b "Once you add a story, pictures, and music, you can release it to the world!"
-
+    b "Hello Agent [player_name]. As our top agent, you’ve been entrusted with a high priority mission. Should you choose to accept, 
+    your mission is to protect top-secret classified information from a terrorist group of malicious attackers. Remember, the fate of 
+    the entire world rests in your hands…"
+    
     a "I accept!"
-    a "Hello world."
+    
+    b "I knew I could count on our best agent. To get started, I'll walk you through the essential steps in keeping private information secure. "
 
 # The following is some code I stole from my other renpy game, use this basis to make the minigames
     n "."
