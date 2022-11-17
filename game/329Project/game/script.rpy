@@ -60,6 +60,38 @@ label start:
     
     b "I knew I could count on our best agent. To get started, I'll walk you through the essential steps in keeping private information secure. "
 
+    b "Section 1 - Passwords: The first barrier against having your personal information stolen is a strong password. The stronger your password,
+    the more difficult it is for attackers to gain unauthorized access to your assets."
+
+    b "A strong password is hard to guess, meaning it should be unique and unrelated to any of your personal information. On top of this, your 
+    password should have at least 12 characters (the more the better) that should a mix of uppercase and lowercase letters. Your password should
+    also include numbers and at least one special character."
+
+    b "Weak passwords often contain personal information (such as names or birthdays), words from the dictionary, repeated patterns (12345), or series of characters
+    that appear together on the keyboard (qwerty)."
+
+    b "Now, it is your turn Agent [player_name] to create a strong password of your own using the information I have taught you."
+
+    label password:
+        $ player_password = renpy.input("Enter your new password here:")
+        $ player_password = player_password.strip()
+
+        $ player_password_strength = 0
+
+        #Add password strength code here
+        if len(player_password) > 11
+            $ player_password_strength = 1
+
+        b "Okay Agent [player_name], let's see how strong your password is..."
+
+        if player_password_strength == 0
+            b "Oh no! The malicious attackers were able to guess your password and steal our classified information. Please retry the mission."
+            call password from _call_password
+        else 
+            b "I knew our best agent would come up with a secure password! However, this is just the start of your mission if you're determined to keep our classified
+            information secure. "
+
+
 # The following is some code I stole from my other renpy game, use this basis to make the minigames
     n "."
     label mg1:
