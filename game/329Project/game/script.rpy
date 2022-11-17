@@ -76,19 +76,19 @@ label start:
         $ player_password = renpy.input("Enter your new password here:")
         $ player_password = player_password.strip()
 
-        $ player_password_strength = 0
+        $ strong_password = False
 
         #Add password strength code here
         if len(player_password) > 11:
-            $ player_password_strength = 1
+            $ strong_password = True
 
         b "Okay Agent [player_name], let's see how strong your password is..."
 
-        if player_password_strength == 0:
+        if strong_password == False:
             b "Oh no! The malicious attackers were able to guess your password and steal our classified information. Please retry the mission."
             call password from _call_password
         else:
-            b "I knew our best agent would come up with a secure password! However, this is just the start of your mission if you're determined to keep our classified
+            b "You did it! I knew our best agent would come up with a secure password! However, this is just the start of your mission if you're determined to keep our classified
             information secure. "
 
 
