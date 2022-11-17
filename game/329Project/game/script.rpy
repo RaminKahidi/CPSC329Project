@@ -34,10 +34,10 @@ label start:
     scene bg room
 
     # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "boss happy.png" to the images
+    # replace it by adding a file named "boss.png" to the images
     # directory.
 
-    show boss happy
+    show boss
 
     # These display lines of dialogue.
 
@@ -51,8 +51,12 @@ label start:
     b "Hello Agent [player_name]. As our top agent, you’ve been entrusted with a high priority mission. Should you choose to accept, 
     your mission is to protect top-secret classified information from a terrorist group of malicious attackers. Remember, the fate of 
     the entire world rests in your hands…"
+
+    show player
     
     a "I accept!"
+
+    show boss
     
     b "I knew I could count on our best agent. To get started, I'll walk you through the essential steps in keeping private information secure. "
 
