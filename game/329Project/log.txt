@@ -1,56 +1,34 @@
-Mon Nov 14 13:06:28 2022
+Thu Nov 17 14:38:04 2022
 Windows-10-10.0.22000
 Ren'Py 7.5.3.22090809
  
 
-Bootstrap to the start of init.init took 0.62s
-Early init took 0.02s
-Loader init took 0.14s
-Loading error handling took 0.36s
-Loading script took 4.94s
-Loading save slot metadata. took 0.04s
+Bootstrap to the start of init.init took 0.06s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.07s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Faled to initialize steam: WindowsError(126, 'The specified module could not be found')
- - Init at game/gui.rpy:11 took 0.25675 s.
-Running init code took 0.62s
-Loading analysis data took 0.11s
-Analyze and compile ATL took 0.01s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
 Index archives took 0.00s
-Dump and make backups. took 0.37s
+Dump and make backups. took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.07s
-DPI scale factor: 3.000000
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.01s
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.21s
 Cleaning stores took 0.00s
-Init translation took 0.20s
-Build styles took 0.02s
-Load screen analysis took 0.13s
-Analyze screens took 0.01s
-Save screen analysis took 0.00s
-Prepare screens took 0.34s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.14s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.53s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 3840, 2160)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Plus Graphics'
-Version: '4.6.0 - Build 31.0.101.1999'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(3659, 2058) drawable=(3659, 2058)
-Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.01s
-Load screen analysis took 0.04s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
 Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s

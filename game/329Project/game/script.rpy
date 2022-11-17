@@ -16,7 +16,7 @@ define n = Character('Narrator', color="#1EC8F1")
 
 label start:
 
-# Ramin: The way you can thing about the game is that every time you click the mouse, 
+# Ramin: The way you can think about the game is that every time you click the mouse, 
 # renpy will move down a line and read the next show the next text or the next image etc.
 
     # Show a background. This uses a placeholder by default, but you can
@@ -45,7 +45,7 @@ label start:
     $ player_name = player_name.strip()
 
     if player_name =="":
-        $ player_name= "Agent"
+        $ player_name= "X"
 
 
     b "Hello Agent [player_name]. As our top agent, you’ve been entrusted with a high priority mission. Should you choose to accept, your mission is to protect top-secret classified information from a terrorist group of malicious attackers. The fate of the entire world rests in your hands…"
