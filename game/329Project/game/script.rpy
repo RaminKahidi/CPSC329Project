@@ -292,7 +292,7 @@ label start:
 
     a "Thanks boss! I'm going to keep using these cyber strategies to stay safe online and to keep my personal information secure!"
 
-    return
+    $ MainMenu(confirm=False)()
 
 
 # The following is some code I stole from my other renpy game, use this basis to make the minigames
