@@ -1,30 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 23, in script
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-  File "game/script.rpy", line 23, in <module>
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-  File "game/script.rpy", line 23, in <lambda>
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-IOError: [Errno 2] No such file or directory: u'./john-the-ripper.txt'
+  File "game/script.rpy", line 19, in script
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 19, in script
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 19, in <module>
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 19, in <lambda>
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+IOError: [Errno 2] No such file or directory: u'C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 23, in script
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-  File "C:\Users\Farbod\renpy-7.5.3-sdk/renpy/ast.py", line 1131, in execute
+  File "renpy/bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 660, in main
+    run(restart)
+  File "renpy/main.py", line 146, in run
+    renpy.execution.run_context(True)
+  File "renpy/execution.py", line 938, in run_context
+    context.run()
+  File "game/script.rpy", line 19, in script
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 19, in script
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "renpy/ast.py", line 1131, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Farbod\renpy-7.5.3-sdk/renpy/python.py", line 1061, in py_exec_bytecode
+  File "renpy/python.py", line 1061, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 23, in <module>
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-  File "game/script.rpy", line 23, in <lambda>
-    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
-IOError: [Errno 2] No such file or directory: u'./john-the-ripper.txt'
+  File "game/script.rpy", line 19, in <module>
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 19, in <lambda>
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+IOError: [Errno 2] No such file or directory: u'C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt'
 
-Windows-10-10.0.22000 AMD64
+Windows-10-10.0.19041 AMD64
 Ren'Py 7.5.3.22090809
 329Project 1.0
-Fri Dec  2 17:01:49 2022
+Fri Dec  2 17:31:00 2022

@@ -16,7 +16,8 @@ define n = Character('Narrator', color="#9900ff")
 
 label start:
     play music "audio/Mission_Impossible.ogg"
-    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
+    $ password_list = [line.strip() for line in open(renpy.loader.transfn("john-the-ripper.txt"), "r")]
+    # $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
 # Ramin: The way you can think about the game is that every time you click the mouse, 
 # renpy will move down a line and read the next show the next text or the next image etc.
 
@@ -133,7 +134,7 @@ label start:
             b "Okay Agent [player_name], let's see how strong your password is..."
 
             if password_strength_meter == 5 and not common_password:
-                b "Congratulations, your password was 100\% secure! I knew our best agent would come up with a secure password! 
+                b "Congratulations, your password has 100\% of our requirement, and would take a long time to crack! I knew our best agent would come up with a secure password! 
                 However, this is just the start of your mission if you're determined to keep our classified information secure."
 
             else:
@@ -151,7 +152,7 @@ label start:
                 if common_password:
                     b "your password was in a list of common passwords"
                 $ password_strength_meter_percent = int(password_strength_meter) * 100 / 5 + renpy.random.randint(0,10)
-                b "Your password was only [password_strength_meter_percent]\% secure. Please retry the mission."
+                b "Your password was only has [password_strength_meter_percent]\% of our security requirement, and could be cracked easily! Please retry the mission."
                 call password from _call_password_1
 
                 
@@ -178,42 +179,42 @@ label start:
     # Categorizing authentication forms game
 
     menu:
-        "what category does passwords belong to?"
+        "What category does passwords belong to?"
 
-        "things you know":
-            b "correct!"
+        "Things you know":
+            b "Correct!"
 
-        "things you have":
-            b "that's incorrect, passwords are something that you know, not something that you have"
+        "Things you have":
+            b "That's incorrect, passwords are something that you know, not something that you have"
 
-        "things you are":
-            b "that's incorrect, passwords are something that you know, not something that you are"
-
-    menu:
-        "what category does phone number belong to?"
-
-        "things you know":
-            b "that's incorrect, phone number is something that you have, not something that you know"
-
-        "things you have":
-            b "correct!"
-
-        "things you are":
-            b "that's incorrect, passwords are something that you have, not something that you are"
+        "Things you are":
+            b "That's incorrect, passwords are something that you know, not something that you are"
 
     menu:
-        "what category does facial recognition belong to?"
+        "What category does phone number belong to?"
 
-        "things you know":
-            b "that's incorrect, facial recognition is something that you are, not something that you know"
+        "Things you know":
+            b "That's incorrect, phone number is something that you have, not something that you know"
 
-        "things you have":
-            b "that's incorrect, facial recognition are something that you are, not something that you have"
+        "Things you have":
+            b "Correct!"
 
-        "things you are":
-            b "correct!"
+        "Things you are":
+            b "That's incorrect, passwords are something that you have, not something that you are"
 
-    b "now that we have gone over and understood the different forms of two-factor authentication, you must construct the
+    menu:
+        "What category does facial recognition belong to?"
+
+        "Things you know":
+            b "That's incorrect, facial recognition is something that you are, not something that you know"
+
+        "Things you have":
+            b "That's incorrect, facial recognition are something that you are, not something that you have"
+
+        "Things you are":
+            b "Correct!"
+
+    b "Now that we have gone over and understood the different forms of two-factor authentication, you must construct the
     strongest form of two-factor authentication by choosing two different factors."
 
     hide boss
@@ -222,20 +223,20 @@ label start:
     # Agent chooses factors
 
     menu:
-        "choose a two-factor authentication method for things that you have"
+        "Choose a two-factor authentication method for things that you have"
 
-        "email address":
-            b "nice choice"
-        "phone number":
-            b "nice choice"
+        "Email address":
+            b "Nice choice"
+        "Phone number":
+            b "Nice choice"
 
     menu:
-        "choose a two-factor authentication method for things that you are"
+        "Choose a two-factor authentication method for things that you are"
 
-        "facail recognition":
-            b "great choice"
-        "fingerprint":
-            b "great choice"
+        "Facail recognition":
+            b "Great choice"
+        "Fingerprint":
+            b "Great choice"
     
 
     hide player
@@ -258,17 +259,17 @@ label start:
 
     label email:
         menu:
-            "which email is fake?"
+            "Which email is fake?"
 
-            "jeffrogers@amazom.com":
-                "that's not correct, when checking for fake emails, make sure to look at the website link after the @"
+            "jeffrogers@amazon.com":
+                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @"
                 jump email
 
-            "davidross@youtube.ar":
-                "correct!"
+            "davidross@y0utube.ar":
+                "Correct! The domain name after the @ is clearly not to proper youtube address."
 
-            "billgates@mincrosoft.com":
-                "that's not correct, when checking for fake emails, make sure to look at the website link after the @"
+            "billgates@microsoft.com":
+                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @"
                 jump email
 
 
@@ -288,9 +289,25 @@ label start:
     label calls:
         stop music
         play music "audio/scam.ogg"
+        menu:
+            "Playback":
+                jump calls
+            "Next voicemail":
+                call audio2
         pause 48.0
+        label audio2:
+        stop music
         play music "audio/legit.ogg"
+        menu:
+            "Last voicemail":
+                jump calls
+            "Playback":
+                jump audio2
+            "Skip":
+                call endCalls
         pause 30.0
+        label endCalls:
+        stop music
         play music "audio/Mission_Impossible.ogg"
 
     hide player
@@ -303,15 +320,15 @@ label start:
 
     # Agent picks scam call
     menu: 
-        "which one was a scam call?"
+        "Which one was a scam call?"
 
-        "first voicemail":
-            "good job, that was the scam call"
+        "First voicemail":
+            "Good job, that was the scam call"
 
         "second voicemail":
-            "not quite, the first voicemail was the scam call"
+            "Not quite, the first voicemail was the scam call"
 
-        "listen again":
+        "Listen again":
             jump calls
 
     hide player
@@ -327,14 +344,14 @@ label start:
     menu:
         "What made you choose that call as the fake one?"
 
-        "the threatening nature of the message":
-            "yes, infact all of the options were signs that the message was a scam"
+        "The threatening nature of the message":
+            "Yes, infact all of the options were signs that the message was a scam"
 
-        "the urgnecy of the message":
-            "yes, infact all of the options were signs that the message was a scam"
+        "The urgnecy of the message":
+            "Yes, infact all of the options were signs that the message was a scam"
 
-        "how the message didn't sound like it was real":
-            "yes, infact all of the options were signs that the message was a scam"
+        "How the message didn't sound like it was real":
+            "Yes, infact all of the options were signs that the message was a scam"
 
     hide player
     show boss
@@ -342,7 +359,7 @@ label start:
     b "That's right Agent! These things you've pointed out make that call very suspicious. You made the right decision by not trusting it. I'm sure it
     was part of the attackers' plan to steal our classified assets. Nice work!"
 
-    b " Section 4: Phishing"
+    b "Section 4: Phishing"
 
     b "Continue being on the lookout for suspicious activity Agent [player_name]. I'm sure the attackers will continue their tricks to try to deceive us."
 
@@ -357,11 +374,11 @@ label start:
         menu:
             "Hmm, something new just popped up on my screen! What is this?"
 
-            "click add":
+            "Click ad":
                 "Oh no! It must’ve been a trick! I’ve been compromised!"
                 jump chapter_4
             
-            "click out of add":
+            "Click out of ad":
                 "This looks suspicious. I better not interact and exit. "
 
         hide phishadd
@@ -370,11 +387,11 @@ label start:
         menu:
             "Now I've been asked to log into my Google Account? What should I do?"
 
-            "log in":
+            "Log in":
                 "Oh no! It was a trick! I've been compromised!"
                 jump chapter_4
 
-            "exit":
+            "Exit":
                 "This page seems different from the actual Google login page. First of all, the URL looks different. Also, I wasn't even trying to log into my 
                 Google account. I should exit the page."
 
@@ -384,11 +401,11 @@ label start:
         menu:
             "Now I'm being asked for my credit card information too? What could this before?"
 
-            "give information":
+            "Give information":
                 "Oh no, I've been tricked! My information has been compromised!"
                 jump chapter_4
 
-            "exit page":
+            "Exit page":
                 "This website does not seem credible. I should first confirm whether the site and merchandise are official and secure before giving out
                 any personal information that would put the classified assets at risk. Let's exit this page."
 
