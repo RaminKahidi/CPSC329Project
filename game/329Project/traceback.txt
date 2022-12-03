@@ -1,36 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 126, in script
-    b "Your password was only [password_strengh_meter]% secure. Please retry the mission."
-KeyError: u'password_strengh_meter'
+  File "game/script.rpy", line 23, in script
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 23, in <module>
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 23, in <lambda>
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+IOError: [Errno 2] No such file or directory: u'./john-the-ripper.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 126, in script
-    b "Your password was only [password_strengh_meter]% secure. Please retry the mission."
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/character.py", line 1253, in __call__
-    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/character.py", line 1172, in prefix_suffix
-    return (sub(prefix) + sub(body) + sub(suffix))
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/character.py", line 1152, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/substitutions.py", line 278, in substitute
-    s = formatter.vformat(s, (), kwargs) # type: ignore
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
-  File "C:\Users\tayel\Documents\Ren'Py 7.5.3/renpy/substitutions.py", line 168, in get_field
-    obj, arg_used = super(Formatter, self).get_field(field_name, args, kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'password_strengh_meter'
+  File "game/script.rpy", line 23, in script
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+  File "C:\Users\Farbod\renpy-7.5.3-sdk/renpy/ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Farbod\renpy-7.5.3-sdk/renpy/python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 23, in <module>
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+  File "game/script.rpy", line 23, in <lambda>
+    $ password_list = [line.strip() for line in open("./john-the-ripper.txt", "r")]
+IOError: [Errno 2] No such file or directory: u'./john-the-ripper.txt'
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 7.5.3.22090809
 329Project 1.0
-Thu Nov 17 16:26:23 2022
+Fri Dec  2 17:01:49 2022

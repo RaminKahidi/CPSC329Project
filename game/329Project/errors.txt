@@ -2,11 +2,17 @@
 errors listed below, and try again.
 
 
-The label _call_password is defined twice, at File "game/script.rpy", line 80:
-            call password from _call_password
-and File "game/script.rpy", line 131:
-                call password from _call_password
+File "game/script.rpy", line 355: expected 'image_name_component' not found.
+    scene "images/add.jpg"
+          ^
 
+File "game/script.rpy", line 367: expected 'image_name_component' not found.
+    scene "images/login.jpg"
+          ^
+
+File "game/script.rpy", line 380: expected 'image_name_component' not found.
+    scene "images/card.jpg"
+          ^
 
 Ren'Py Version: Ren'Py 7.5.3.22090809
-Thu Nov 17 16:35:35 2022
+Fri Dec  2 16:41:46 2022

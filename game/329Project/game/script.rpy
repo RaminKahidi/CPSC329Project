@@ -15,7 +15,8 @@ define n = Character('Narrator', color="#9900ff")
 # The game starts here.
 
 label start:
-
+    play music "audio/Mission_Impossible.ogg"
+    $ password_list = [line.strip() for line in open("C:/University/third year/CPSC 329/CPSC329Project/game/329Project/game/john-the-ripper.txt", "r")]
 # Ramin: The way you can think about the game is that every time you click the mouse, 
 # renpy will move down a line and read the next show the next text or the next image etc.
 
@@ -99,6 +100,11 @@ label start:
             if len(player_password) > 11:
                 $ password_long_enough = True
                 $ password_strength_meter += 1
+
+            if player_password in password_list:
+                $ common_password = True
+            else:
+                $ common_password = False
             
             $ character = 0
             while character < len(player_password):
@@ -126,7 +132,7 @@ label start:
 
             b "Okay Agent [player_name], let's see how strong your password is..."
 
-            if password_strength_meter == 5:
+            if password_strength_meter == 5 and not common_password:
                 b "Congratulations, your password was 100\% secure! I knew our best agent would come up with a secure password! 
                 However, this is just the start of your mission if you're determined to keep our classified information secure."
 
@@ -142,6 +148,8 @@ label start:
                     b "Your password did not contain any digits."
                 if password_contains_special == False:
                     b "Your password did not contain any special characters."
+                if common_password:
+                    b "your password was in a list of common passwords"
                 $ password_strength_meter_percent = int(password_strength_meter) * 100 / 5 + renpy.random.randint(0,10)
                 b "Your password was only [password_strength_meter_percent]\% secure. Please retry the mission."
                 call password from _call_password_1
@@ -154,7 +162,7 @@ label start:
     b "Multi-factor authentication works as another barrier between your classified information and the malicious attackers."
     
     b "Unlike a password alone that is a single factor of authentication, multi-factor authentication confirms your identity based things you know, 
-    things you have, or thingsyou are."
+    things you have, or things you are."
     
     b "Your next task Agent [player_name], should you choose to accept, is to correctly identify which of the three authentication categories 
     each example belongs to."
@@ -168,13 +176,67 @@ label start:
     show boss
     
     # Categorizing authentication forms game
-    b "Wow Agent [player_name],  you really understand the different forms of authentication! Now that these have been identified, you must construct the
+
+    menu:
+        "what category does passwords belong to?"
+
+        "things you know":
+            b "correct!"
+
+        "things you have":
+            b "that's incorrect, passwords are something that you know, not something that you have"
+
+        "things you are":
+            b "that's incorrect, passwords are something that you know, not something that you are"
+
+    menu:
+        "what category does phone number belong to?"
+
+        "things you know":
+            b "that's incorrect, phone number is something that you have, not something that you know"
+
+        "things you have":
+            b "correct!"
+
+        "things you are":
+            b "that's incorrect, passwords are something that you have, not something that you are"
+
+    menu:
+        "what category does facial recognition belong to?"
+
+        "things you know":
+            b "that's incorrect, facial recognition is something that you are, not something that you know"
+
+        "things you have":
+            b "that's incorrect, facial recognition are something that you are, not something that you have"
+
+        "things you are":
+            b "correct!"
+
+    b "now that we have gone over and understood the different forms of two-factor authentication, you must construct the
     strongest form of two-factor authentication by choosing two different factors."
 
     hide boss
     show player
     
     # Agent chooses factors
+
+    menu:
+        "choose a two-factor authentication method for things that you have"
+
+        "email address":
+            b "nice choice"
+        "phone number":
+            b "nice choice"
+
+    menu:
+        "choose a two-factor authentication method for things that you are"
+
+        "facail recognition":
+            b "great choice"
+        "fingerprint":
+            b "great choice"
+    
 
     hide player
     show boss
@@ -187,12 +249,28 @@ label start:
     b "Section 3: Social Engineering"
 
     b "Look Agent [player_name]! It appears that you've received a couple of emails. Let's inspect them together... One of these emails seems suspicious,
-    can you tell which one is the real one?"
+    can you tell which one is the fake one?"
 
     hide boss
     show player
     
     # Agent chooses email
+
+    label email:
+        menu:
+            "which email is fake?"
+
+            "jeffrogers@amazom.com":
+                "that's not correct, when checking for fake emails, make sure to look at the website link after the @"
+                jump email
+
+            "davidross@youtube.ar":
+                "correct!"
+
+            "billgates@mincrosoft.com":
+                "that's not correct, when checking for fake emails, make sure to look at the website link after the @"
+                jump email
+
 
     hide player
     show boss
@@ -207,6 +285,14 @@ label start:
 
     # Listen to both calls
 
+    label calls:
+        stop music
+        play music "audio/scam.ogg"
+        pause 48.0
+        play music "audio/legit.ogg"
+        pause 30.0
+        play music "audio/Mission_Impossible.ogg"
+
     hide player
     show boss
 
@@ -216,6 +302,17 @@ label start:
     show player
 
     # Agent picks scam call
+    menu: 
+        "which one was a scam call?"
+
+        "first voicemail":
+            "good job, that was the scam call"
+
+        "second voicemail":
+            "not quite, the first voicemail was the scam call"
+
+        "listen again":
+            jump calls
 
     hide player
     show boss
@@ -226,6 +323,18 @@ label start:
     show player
 
     # Agent picks call criteria
+
+    menu:
+        "What made you choose that call as the fake one?"
+
+        "the threatening nature of the message":
+            "yes, infact all of the options were signs that the message was a scam"
+
+        "the urgnecy of the message":
+            "yes, infact all of the options were signs that the message was a scam"
+
+        "how the message didn't sound like it was real":
+            "yes, infact all of the options were signs that the message was a scam"
 
     hide player
     show boss
@@ -241,37 +350,49 @@ label start:
     show player
 
     # Pop up ad appears
+    label chapter_4:
 
-    a "Hmm, something new just popped up on my screen! What is this?"
+        show phishadd at truecenter
 
-    # Option 1 (click ad)
-    a "Oh no, it must have been a trick! I've been compromised!" # restart chapter
+        menu:
+            "Hmm, something new just popped up on my screen! What is this?"
 
-    # Option 2 (click out of ad)
-    a "This looks suspicious. I better not interact with it."
+            "click add":
+                "Oh no! It must’ve been a trick! I’ve been compromised!"
+                jump chapter_4
+            
+            "click out of add":
+                "This looks suspicious. I better not interact and exit. "
 
-    # Google login
+        hide phishadd
+        show login at truecenter
 
-    a "Now I've been asked to log into my Google Account? What should I do?"
+        menu:
+            "Now I've been asked to log into my Google Account? What should I do?"
 
-    # Option 1 (log in)
-    a "Oh no! It was a trick! I've been compromised!" # restart chapter
+            "log in":
+                "Oh no! It was a trick! I've been compromised!"
+                jump chapter_4
 
-    # Option 2 (exit)
-    a "This page seems different from the actual Google login page. First of all, the URL looks different. Also, I wasn't even trying to log into my 
-    Google account. I should exit the page."
+            "exit":
+                "This page seems different from the actual Google login page. First of all, the URL looks different. Also, I wasn't even trying to log into my 
+                Google account. I should exit the page."
 
-    # Credit card information
+        hide login
+        show card at truecenter
 
-    a "Now I'm being asked for my credit card information too? What could this before?"
+        menu:
+            "Now I'm being asked for my credit card information too? What could this before?"
 
-    # Option 1 (give information)
-    a "Oh no, I've been tricked! My information has been compromised!" # restart chapter
+            "give information":
+                "Oh no, I've been tricked! My information has been compromised!"
+                jump chapter_4
 
-    # Option 2 (exit page)
-    a "This website does not seem credible. I should first confirm whether the site and merchandise are official and secure before giving out
-    any personal information that would put the classified assets at risk. Let's exit this page."
+            "exit page":
+                "This website does not seem credible. I should first confirm whether the site and merchandise are official and secure before giving out
+                any personal information that would put the classified assets at risk. Let's exit this page."
 
+    hide card
     hide player
     show boss
 
@@ -291,6 +412,8 @@ label start:
     show player
 
     a "Thanks boss! I'm going to keep using these cyber strategies to stay safe online and to keep my personal information secure!"
+
+    stop music
 
     $ MainMenu(confirm=False)()
 
