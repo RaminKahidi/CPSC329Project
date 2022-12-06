@@ -150,7 +150,7 @@ label start:
                 if password_contains_special == False:
                     b "Your password did not contain any special characters."
                 if common_password:
-                    b "your password was in a list of common passwords"
+                    b "Your password was in a list of common passwords."
                 $ password_strength_meter_percent = int(password_strength_meter) * 100 / 5 + renpy.random.randint(0,10)
                 b "Your password was only has [password_strength_meter_percent]\% of our security requirement, and could be cracked easily! Please retry the mission."
                 call password from _call_password_1
@@ -179,37 +179,37 @@ label start:
     # Categorizing authentication forms game
 
     menu:
-        "What category does passwords belong to?"
+        "What category do passwords belong to?"
 
         "Things you know":
             b "Correct!"
 
         "Things you have":
-            b "That's incorrect, passwords are something that you know, not something that you have"
+            b "That's incorrect, passwords are something that you know, not something that you have."
 
         "Things you are":
-            b "That's incorrect, passwords are something that you know, not something that you are"
+            b "That's incorrect, passwords are something that you know, not something that you are."
 
     menu:
-        "What category does phone number belong to?"
+        "What category do phone numbers belong to?"
 
         "Things you know":
-            b "That's incorrect, phone number is something that you have, not something that you know"
+            b "That's incorrect, phone numbers are something that you have, not something that you know."
 
         "Things you have":
             b "Correct!"
 
         "Things you are":
-            b "That's incorrect, passwords are something that you have, not something that you are"
+            b "That's incorrect, phone numbers are something that you have, not something that you are."
 
     menu:
         "What category does facial recognition belong to?"
 
         "Things you know":
-            b "That's incorrect, facial recognition is something that you are, not something that you know"
+            b "That's incorrect, facial recognition is something that you are, not something that you know."
 
         "Things you have":
-            b "That's incorrect, facial recognition are something that you are, not something that you have"
+            b "That's incorrect, facial recognition are something that you are, not something that you have."
 
         "Things you are":
             b "Correct!"
@@ -223,20 +223,20 @@ label start:
     # Agent chooses factors
 
     menu:
-        "Choose a two-factor authentication method for things that you have"
+        "Choose a two-factor authentication method for things that you have."
 
         "Email address":
-            b "Nice choice"
+            b "Nice choice."
         "Phone number":
-            b "Nice choice"
+            b "Nice choice."
 
     menu:
-        "Choose a two-factor authentication method for things that you are"
+        "Choose a two-factor authentication method for things that you are."
 
-        "Facail recognition":
-            b "Great choice"
+        "Facial recognition":
+            b "Great choice."
         "Fingerprint":
-            b "Great choice"
+            b "Great choice."
     
 
     hide player
@@ -262,14 +262,14 @@ label start:
             "Which email is fake?"
 
             "jeffrogers@amazon.com":
-                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @"
+                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @."
                 jump email
 
             "davidross@y0utube.ar":
                 "Correct! The domain name after the @ is clearly not to proper youtube address."
 
             "billgates@microsoft.com":
-                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @"
+                "This email is actually real! When checking for fake emails, make sure to look at the website link after the @."
                 jump email
 
 
@@ -282,7 +282,7 @@ label start:
     hide boss
     show player
 
-    a "It seems I've gotten a some voicemails as well. Let's listen to them together... it could be vital information about the mission."
+    a "It seems I've gotten some voicemails as well. Let's listen to them together... it could be vital information about the mission."
 
     # Listen to both calls
 
@@ -292,18 +292,18 @@ label start:
         menu:
             "Playback":
                 jump calls
-            "Next voicemail":
+            "Second voicemail":
                 call audio2
         pause 48.0
         label audio2:
         stop music
         play music "audio/legit.ogg"
         menu:
-            "Last voicemail":
+            "First voicemail":
                 jump calls
             "Playback":
                 jump audio2
-            "Skip":
+            "Next":
                 call endCalls
         pause 30.0
         label endCalls:
@@ -323,10 +323,11 @@ label start:
         "Which one was a scam call?"
 
         "First voicemail":
-            "Good job, that was the scam call"
+            "Good job, that was the scam call."
 
-        "second voicemail":
-            "Not quite, the first voicemail was the scam call"
+        "Second voicemail":
+            "Not quite, try again."
+            jump calls
 
         "Listen again":
             jump calls
@@ -345,13 +346,13 @@ label start:
         "What made you choose that call as the fake one?"
 
         "The threatening nature of the message":
-            "Yes, infact all of the options were signs that the message was a scam"
+            "Yes, in fact all of the options were signs that the message was a scam"
 
-        "The urgnecy of the message":
-            "Yes, infact all of the options were signs that the message was a scam"
+        "The urgency of the message":
+            "Yes, in fact all of the options were signs that the message was a scam"
 
         "How the message didn't sound like it was real":
-            "Yes, infact all of the options were signs that the message was a scam"
+            "Yes, in fact all of the options were signs that the message was a scam"
 
     hide player
     show boss
